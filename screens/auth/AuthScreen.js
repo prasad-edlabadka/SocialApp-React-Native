@@ -11,6 +11,7 @@ import {
     Platform,
     Alert
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { showMessage } from "react-native-flash-message";
 import * as authActions from '../../store/actions/auth';
@@ -230,9 +231,12 @@ const AuthScreen = (props) => {
 
     return (
             <View style={styles.container}>
+                {/* #ffffff 0%,#e3e9f2 56%,#5b94f7 84%,#bd3a3f 100% */}
+                <LinearGradient colors={['#ffffff','#e3e9f2','#5b94f7','#bd3a3f']} locations={[0,0.56,0.84,1]} > 
                 <Image style={styles.bgImage} source={require('../../assets/bg-auth.png')} />
                 <View style={styles.titleContainer} >
-                    <Text style={styles.title}>SocialApp</Text>
+                    <Image source={require('../../assets/logo.png')} /> 
+                    {/* <Text style={styles.title}>SocialApp</Text> */}
                 </View>
 
                 {/* { error !== null && (
@@ -309,6 +313,10 @@ const AuthScreen = (props) => {
                         { isSignup ? "Already a user ? Login" : "Don't have an account ? Register" }
                     </Text>
                 </TouchableOpacity>
+                <View style={styles.titleContainer} >
+                    <Image source={require('../../assets/pati.gif')} style={styles.pati}/>
+                </View>
+                </LinearGradient>
             </View>    
     );
 }
@@ -330,7 +338,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#DCDCDC',
+        backgroundColor: '#333',
+        //background: "linear-gradient(to bottom,  #ffffff 0%,#e3e9f2 56%,#5b94f7 84%,#bd3a3f 100%)",
+
     },
     titleContainer: {
         marginBottom: 40,
@@ -479,6 +489,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         justifyContent: 'center',
+    },
+    pati: {
+        resizeMode: 'contain',
+        aspectRatio: 1,
     },
     btnText: {
         color: "white",
